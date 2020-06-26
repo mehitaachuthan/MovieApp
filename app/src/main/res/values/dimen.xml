@@ -10,4 +10,5 @@
     <dimen name="rating_padding_bottom">5dp</dimen>
     <dimen name="rating_size">12dp</dimen>
     <dimen name="detail_poster_height">500dp</dimen>
+    <dimen name="layout_margin_left">10dp</dimen>
 </resources>

@@ -3,6 +3,8 @@ package test.example.movieapp;
 import com.google.gson.annotations.SerializedName;
 
 public class Movie {
+    private final String BASE_IMAGE_URL = "https://image.tmdb.org/t/p/w500";
+
     @SerializedName("popularity")
     private double popularity;
     @SerializedName("vote_count")
@@ -76,7 +78,7 @@ public class Movie {
     }
 
     public String getPosterPath() {
-        return posterPath;
+        return BASE_IMAGE_URL + posterPath;
     }
 
     public void setPosterPath(String posterPath) {
