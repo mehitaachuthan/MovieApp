@@ -14,20 +14,30 @@ import java.util.ArrayList;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder> {
     private ArrayList<Movie> moviesList;
     private Context context;
+    private OnMovieClickListener movieClickListener;
 
-    public MovieAdapter(ArrayList<Movie> movies, Context context) {
+    public MovieAdapter(ArrayList<Movie> movies, Context context, OnMovieClickListener movieClickListener) {
         this.moviesList = movies;
         this.context = context;
+        this.movieClickListener = movieClickListener;
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public ImageView image;
         public TextView title, rating;
-        public MyViewHolder(View itemView) {
+        public OnMovieClickListener movieListener;
+        public MyViewHolder(View itemView, OnMovieClickListener movieListener) {
             super(itemView);
             this.image = itemView.findViewById(R.id.poster);
             this.title = itemView.findViewById(R.id.title);
             this.rating = itemView.findViewById(R.id.rating);
+            this.movieListener = movieListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        public void onClick(View view) {
+            movieListener.onMovieClick(getLayoutPosition());
         }
     }
 
@@ -35,7 +45,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MyViewHolder
     public MovieAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.card_view, parent, false);
-        MyViewHolder myView = new MyViewHolder(view);
+        MyViewHolder myView = new MyViewHolder(view, movieClickListener);
         return myView;
     }
 

@@ -94,7 +94,7 @@ public class Downloader extends AsyncTask<Void, Void, Void> {
     @Override
     protected void onPostExecute(Void avoid) {
         super.onPostExecute(null);
-        callback.onAsyncTaskListener(moviesList);
+        callback.onAsyncTask(moviesList);
         if(progressDialog.isShowing())
             progressDialog.dismiss();
     }
