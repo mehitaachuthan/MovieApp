@@ -1,2 +1,2 @@
 # MovieApp
-Displays Movies using Movie DB API
+Displays Movies using TMDb API (Movie DB)
